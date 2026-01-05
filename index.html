@@ -1,1 +1,149 @@
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTS Comeback Celebration 💜</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000; /* Black background */
+    color: white;
+    text-align: center;
+  }
+
+  /* Glow effect for headings */
+  h1 {
+    font-size: 60px;
+    color: #b38bff;
+    text-shadow: 0 0 15px #b38bff, 0 0 30px purple;
+    margin-top: 40px;
+  }
+
+  /* Comeback image styling */
+  .comeback-img {
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #b38bff;
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+
+  .comeback-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px purple;
+  }
+
+  /* Logos row container */
+  .logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+  }
+
+  .logo-row img {
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px #b38bff;
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+
+  .logo-row img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px purple;
+  }
+
+  /* Emoji styling */
+  .logo-row .emoji {
+    font-size: 60px;
+    text-shadow: 0 0 15px #fff, 0 0 30px purple;
+    margin: 0 20px;
+  }
+
+  /* Fireworks dot */
+  .dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* Button */
+  button {
+    margin-top: 40px;
+    padding: 15px 35px;
+    font-size: 20px;
+    border-radius: 30px;
+    border: none;
+    background: #7b2cff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px #b38bff;
+    transition: transform 0.3s;
+  }
+  button:hover {
+    transform: scale(1.1);
+  }
+
+</style>
+</head>
+<body>
+
+<h1>BTS Comeback 💜</h1>
+
+<!-- Comeback image -->
+<img src="comeback.jpg" alt="BTS Comeback" class="comeback-img">
+
+<!-- Logos row -->
+<div class="logo-row">
+  <img src="bts-logo.jpg" alt="BTS Logo">
+  <div class="emoji">🫰🏻</div>
+  <img src="army-logo.jpg" alt="ARMY Logo">
+</div>
+
+<!-- Celebrate Button -->
+<button id="celebrateBtn" onclick="startCelebration()">🎉 Celebrate</button>
+
+<p id="message" style="display:none; font-size:22px; margin-top:20px;">
+  🎆 Let’s celebrate BTS comeback!
+</p>
+
+<script>
+function startCelebration() {
+  document.getElementById("celebrateBtn").style.display = "none";
+  document.getElementById("message").style.display = "block";
+  launchFireworks();
+}
+
+function launchFireworks() {
+  for (let i=0; i<12; i++) setTimeout(explode, i*400);
+}
+
+function explode() {
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+  for (let i=0; i<35; i++){
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = x+"px";
+    dot.style.top = y+"px";
+    dot.style.background = `hsl(${Math.random()*360},100%,60%)`;
+    const angle = Math.random()*2*Math.PI;
+    const dist = Math.random()*160;
+    dot.animate([
+      {transform:"translate(0,0)", opacity:1},
+      {transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px)`, opacity:0}
+    ], {duration:1200,easing:"ease-out"});
+    document.body.appendChild(dot);
+    setTimeout(()=>dot.remove(),1300);
+  }
+}
+</script>
+
+</body>
+</html>    

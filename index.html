@@ -20,6 +20,17 @@
     text-shadow: 0 0 15px #b38bff, 0 0 30px purple;
     margin-top: 40px;
   }
+  h1 { font-size: 3em; }
+h2 { font-size: 2em; }
+p { font-size: 1.2em; }
+  h1, h2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  }
+  @media (max-width: 600px) {
+  h1 { font-size: 2em; }
+  .logo-row { flex-direction: column; }
+  }
 .glow-line {
   font-size: 32px;
   color: #b38bff;
@@ -40,7 +51,10 @@
     transform: scale(1.05);
     box-shadow: 0 0 50px purple;
   }
-
+.comeback-img {
+  max-width: 90%;
+  height: auto;
+    }
   /* Logos row container */
   .logo-row {
     display: flex;
@@ -94,7 +108,14 @@
   button:hover {
     transform: scale(1.1);
   }
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px purple;
+}
 
+.comeback-img:hover {
+  transform: scale(1.05);
+    }
 </style>
 </head>
 <body>

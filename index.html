@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTS Birthday Surprise 💜</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f5f5f5;
+    transition: background 1s, color 1s;
+    overflow-x: hidden;
+  }
+
+  /* Page intro glow */
+  #pageContent {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: intro 1.5s ease-out forwards;
+    padding: 60px 20px;
+  }
+
+  @keyframes intro {
+    0% { opacity: 0; transform: scale(0.6); filter: blur(10px); }
+    60% { opacity: 1; transform: scale(1.05); filter: blur(0); }
+    100% { transform: scale(1); }
+  }
+
+  /* BTS Text Logo */
+  .bts-logo {
+    font-size: 48px;
+    font-weight: bold;
+    color: #7b2cff;
+    text-shadow: 0 0 15px #b38bff, 0 0 30px purple;
+    margin-bottom: 20px;
+  }
+
+  /* Side Emojis */
+  .side-emoji {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 70px;
+    opacity: 0.9;
+    animation: glow 2s infinite alternate;
+    z-index: 999;
+  }
+
+  .left { left: 10px; }
+  .right { right: 10px; }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px white; }
+    to { text-shadow: 0 0 20px gold, 0 0 40px pink; }
+  }
+
+  /* Button */
+  button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #7b2cff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 15px #b38bff;
+    transition: transform 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  /* Firework dots */
+  .dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Side emojis -->
+<div class="side-emoji left">🫰🏻</div>
+<div class="side-emoji right">🫵🏻</div>
+
+<!-- Page content -->
+<div id="pageContent">
+
+  <div class="bts-logo">BTS 💜 ARMY</div>
+
+  <h1>Happy Birthday 🎂</h1>
+  <p>For someone special, from an ARMY heart 💜</p>
+
+  <br>
+
+  <button id="giftBtn" onclick="startCelebration()">🎁 Open Gift</button>
+
+  <p id="message" style="display:none; font-size:22px;">
+    🎉 Surprise unlocked!
+  </p>
+
+  <p id="story" style="display:none; font-size:18px;">
+    May your day shine like BTS on stage ✨💜
+  </p>
+
+</div>
+
+<script>
+function startCelebration() {
+
+  document.getElementById("giftBtn").style.display = "none";
+
+  document.body.style.background = "black";
+  document.body.style.color = "white";
+
+  document.getElementById("message").style.display = "block";
+  document.getElementById("story").style.display = "block";
+
+  fireworks();
+}
+
+function fireworks() {
+  for (let i = 0; i < 12; i++) {
+    setTimeout(explode, i * 400);
+  }
+}
+
+function explode() {
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+
+  for (let i = 0; i < 35; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+    dot.style.background = "hsl(" + Math.random()*360 + ",100%,60%)";
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 160;
+
+    dot.animate([
+      { transform: "translate(0,0)", opacity: 1 },
+      {
+        transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`,
+        opacity: 0
+      }
+    ], {
+      duration: 1200,
+      easing: "ease-out"
+    });
+
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 1300);
+  }
+}
+</script>
+
+</body>
+</html>
